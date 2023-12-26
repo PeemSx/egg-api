@@ -13,6 +13,7 @@ app.use(express.json());
 const PORT = process.env.PORT || 3221;
 const JWT_secret = process.env.JWT_secret || "eTLampHOaN";
 app.use(cors());
+app.options('*', cors());
 
 app.get("/",(req,res) => {
     res.send("Hello API");
