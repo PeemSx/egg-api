@@ -13,9 +13,8 @@ app.use(express.json());
 const PORT = process.env.PORT || 10000;
 const JWT_secret = process.env.JWT_secret || "eTLampHOaN";
 
-app.use(cors({
-    origin: 'https://eggblog.onrender.com'
-}));
+app.use(cors());
+
 app.options('/users/login', cors());
 
 app.get("/",(req,res) => {
