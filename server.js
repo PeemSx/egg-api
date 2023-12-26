@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3221;
 const JWT_secret = process.env.JWT_secret || "eTLampHOaN";
 
 const corsOptions = {
-  origin: 'https://eggblog.onrender.com', // Replace with your frontend URL
+  origin: 'https://eggblog.onrender.com/login', // Replace with your frontend URL
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   credentials: true,
   optionsSuccessStatus: 204, // Added for handling preflight requests
