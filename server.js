@@ -16,6 +16,7 @@ const JWT_secret = process.env.JWT_secret || "eTLampHOaN";
 app.use(cors({
     origin: 'https://eggblog.onrender.com'
 }));
+app.options('/users/login', cors());
 
 app.get("/",(req,res) => {
     res.send("Hello API");
