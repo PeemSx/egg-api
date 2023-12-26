@@ -12,6 +12,13 @@ const JWT_secret = process.env.JWT_secret || "eTLampHOaN";
 
 app.use(cors());
 app.options('*', cors()); // Enable preflight for all routes
+app.options('/users/login', (req, res) => {
+  res.header('Access-Control-Allow-Origin', 'https://eggblog.onrender.com');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.header('Access-Control-Allow-Credentials', true);
+  res.status(200).end();
+});
 app.use(express.json());
 
 app.get("/",(req,res) => {
