@@ -10,7 +10,7 @@ const User = require('./models/User');
 const jwt = require('jsonwebtoken');
 
 app.use(express.json());
-const PORT = process.env.PORT || 3221;
+const PORT = process.env.PORT || 10000;
 const JWT_secret = process.env.JWT_secret || "eTLampHOaN";
 
 app.use(cors());
