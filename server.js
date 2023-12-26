@@ -15,14 +15,14 @@ const JWT_secret = process.env.JWT_secret || "eTLampHOaN";
 
 app.use(cors());
 
-// const corsOptions = {
-//     origin: 'https://eggblog.onrender.com/login', // Replace with your frontend URL
-//     methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-//     credentials: true,
-//     optionsSuccessStatus: 200, // Added for handling preflight requests
-//   };
+const corsOptions = {
+    origin: 'https://eggblog.onrender.com', // Replace with your frontend URL
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+    credentials: true,
+    optionsSuccessStatus: 200, // Added for handling preflight requests
+  };
   
-//   app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 app.get("/",(req,res) => {
     res.send("Hello API");
