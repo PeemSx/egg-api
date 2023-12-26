@@ -6,16 +6,13 @@ const Users = require('./models/User');
 const app = express();
 const cors = require('cors');
 const User = require('./models/User');
-
 const jwt = require('jsonwebtoken');
-
-app.use(express.json());
 const PORT = process.env.PORT || 10000;
 const JWT_secret = process.env.JWT_secret || "eTLampHOaN";
 
 app.use(cors());
-
-app.options('/users/login', cors());
+app.options('*', cors()); // Enable preflight for all routes
+app.use(express.json());
 
 app.get("/",(req,res) => {
     res.send("Hello API");
@@ -53,7 +50,7 @@ app.get("/users", async (req,res) => {
 
 app.post("/users/login", async (req,res) => {
     try {
-        res.header("Access-Control-Allow-Origin", "https://eggblog.onrender.com");
+        res.setHeader("Access-Control-Allow-Origin", "https://eggblog.onrender.com");
         const {username,password} = req.body
         const user = await Users.findOne({username});
         if(user){
