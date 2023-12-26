@@ -12,7 +12,11 @@ const jwt = require('jsonwebtoken');
 app.use(express.json());
 const PORT = process.env.PORT || 3221;
 const JWT_secret = process.env.JWT_secret || "eTLampHOaN";
-app.use(cors());
+app.use(cors({
+  origin: 'https://eggblog.onrender.com',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+}));
 app.options('*', cors());
 
 app.get("/",(req,res) => {
