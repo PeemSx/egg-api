@@ -53,6 +53,7 @@ app.get("/users", async (req,res) => {
 
 app.post("/users/login", async (req,res) => {
     try {
+        res.header("Access-Control-Allow-Origin", "https://eggblog.onrender.com");
         const {username,password} = req.body
         const user = await Users.findOne({username});
         if(user){
