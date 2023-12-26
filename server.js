@@ -12,12 +12,15 @@ const jwt = require('jsonwebtoken');
 app.use(express.json());
 const PORT = process.env.PORT || 3221;
 const JWT_secret = process.env.JWT_secret || "eTLampHOaN";
-app.use(cors({
-    origin: '*',
-    methods: ['GET,HEAD,PUT,PATCH,POST,DELETE'],
-    credentials: true,
-  }));
 
+const corsOptions = {
+  origin: 'https://eggblog.onrender.com', // Replace with your frontend URL
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  credentials: true,
+  optionsSuccessStatus: 204, // Added for handling preflight requests
+};
+
+app.use(cors(corsOptions));
 
 app.get("/",(req,res) => {
     res.send("Hello API");
