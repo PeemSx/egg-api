@@ -13,7 +13,6 @@ const JWT_secret = process.env.JWT_secret || "eTLampHOaN";
 app.use(cors());
 app.use(express.json());
 
-// Serve static assets from the client build directory
 
 app.get("/",(req,res) => {
     res.send("Hello API");
