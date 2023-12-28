@@ -27,6 +27,36 @@ app.get("/blogs", async (req,res) => {
     }
 })
 
+app.put("/blogs/:id", async (req, res) => {
+    try {
+        const postId = req.params.id;
+        const updateData = {
+            title: req.body.title,
+            content: req.body.content,
+        };
+
+        // Update only the title and content fields while keeping others unchanged
+        const updatedPost = await Blog.findByIdAndUpdate(postId, updateData, { new: true });
+
+        res.status(200).json(updatedPost);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ message: error.message });
+    }
+});
+
+app.delete("/blogs/:id", async (req, res) => {
+    try {
+        const postId = req.params.id;
+        const result = await Blog.deleteOne({_id: postId});
+
+        res.status(200).json(result);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ message: error.message });
+    }
+});
+
 app.post("/blogs", async (req,res) => {
     try {
         const blog = await Blog.create(req.body);
