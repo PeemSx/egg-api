@@ -1,18 +1,25 @@
 const express = require('express');
-
-//const bcrypt = require('bcrypt');
+const path = require('path');
 const mongoose = require('mongoose');
+const cors = require('cors');
+const jwt = require('jsonwebtoken');
 const Blog = require('./models/PostSchemas');
 const Users = require('./models/User');
+
 const app = express();
-const cors = require('cors');
-const User = require('./models/User');
-const jwt = require('jsonwebtoken');
 const PORT = process.env.PORT || 10000;
 const JWT_secret = process.env.JWT_secret || "eTLampHOaN";
 
 app.use(cors());
 app.use(express.json());
+
+// Serve static assets
+app.use(express.static(path.join(__dirname, 'build')));
+
+// Serve index.html for any route
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 app.get("/",(req,res) => {
     res.send("Hello API");
